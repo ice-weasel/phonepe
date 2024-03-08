@@ -13,7 +13,7 @@ interface FormData {
   muid: string;
 }
 
-export default function Pay() {
+export default function  Pay() {
   const [data, setData] = useState<FormData>({
     name: "",
     mobile: "",
@@ -23,7 +23,7 @@ export default function Pay() {
 
   const { v4: uuidv4 } = require("uuid");
 
-  const makePayment = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const  makePayment = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const transactionid = "CR-" + uuidv4().toString(36).slice(-6);
     console.log(transactionid);
@@ -52,6 +52,23 @@ export default function Pay() {
 
 
     const checksum = dataBase64 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
+    console.log("c===",checksum);
+
+    const UAT_PAY_API_URL = "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay"
+
+    const response = await axios.post(
+        UAT_PAY_API_URL,
+        {
+            request: dataBase64,
+        },
+        {
+            headers: {
+                accept: "application/json",
+                "Content-Type":"application/json",
+                "X-VERIFY": checksum
+            }
+        }
+    )
 
   };
 
