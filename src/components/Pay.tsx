@@ -1,10 +1,13 @@
 "use client";
 import { randomUUID } from "crypto";
-import { useRouter } from "next/router";
+import Router from "next/router";
+import {useRouter} from "next/navigation"
 import { Redirect } from "next";
 import axios from "axios";
 import sha256 from "crypto-js/sha256";
 import { useState } from "react";
+
+
 
 interface FormData {
   name: string;
@@ -13,13 +16,15 @@ interface FormData {
   muid: string;
 }
 
-export default function  Pay() {
+export default function  Pay() {  
   const [data, setData] = useState<FormData>({
     name: "",
     mobile: "",
     amount: "",
     muid: "",
   });
+
+  const router = useRouter();
 
   const { v4: uuidv4 } = require("uuid");
 
@@ -32,7 +37,7 @@ export default function  Pay() {
       merchantId: process.env.NEXT_PUBLIC_MERCHANT_ID,
       merchantTransactionId: transactionid,
       merchantUserId: "CR-" + uuidv4().toString(36).slice(-6),
-      amount: 10000,
+      amount: 1,
       redirectUrl: `https://localhost:3000/api/status/${transactionid}`,
       redirectMode: "POST",
       callbackUrl: `https://localhost:3000/api/status/${transactionid}`,
@@ -51,10 +56,10 @@ export default function  Pay() {
     const dataSha256 = sha256(fullURL);
 
 
-    const checksum = dataBase64 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
-    console.log("c===",checksum);
+    const checksum = dataSha256 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
+    console.log("c====",checksum);
 
-    const UAT_PAY_API_URL = "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay"
+    const UAT_PAY_API_URL = "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
 
     const response = await axios.post(
         UAT_PAY_API_URL,
@@ -65,13 +70,17 @@ export default function  Pay() {
             headers: {
                 accept: "application/json",
                 "Content-Type":"application/json",
-                "X-VERIFY": checksum
-            }
+                "X-VERIFY": checksum,
+            },
         }
-    )
+    );
+
+        console.log(response);
+    const redirect =await  response.data.data.instrumentResponse.redirectInfo.url;
+    router.push(redirect)
+  
 
   };
-
 
   
 
