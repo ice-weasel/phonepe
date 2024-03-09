@@ -37,10 +37,10 @@ export default function  Pay() {
       merchantId: process.env.NEXT_PUBLIC_MERCHANT_ID,
       merchantTransactionId: transactionid,
       merchantUserId: "CR-" + uuidv4().toString(36).slice(-6),
-      amount: 1,
-      redirectUrl: `https://localhost:3000/api/status/${transactionid}`,
+      amount: 1000,
+      redirectUrl: `https://localhost:3000/success`,
       redirectMode: "POST",
-      callbackUrl: `https://localhost:3000/api/status/${transactionid}`,
+      callbackUrl: `https://localhost:3000/success/${transactionid}`,
       mobileNumber: data.mobile,
       paymentInstrument: {
         type: "PAY_PAGE",
@@ -79,7 +79,6 @@ export default function  Pay() {
     const redirect =await  response.data.data.instrumentResponse.redirectInfo.url;
     router.push(redirect)
   
-
   };
 
   
