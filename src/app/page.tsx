@@ -2,7 +2,7 @@ import Pay from "@/components/Pay";
 export default function Home() {
   return (
     <>
-      <Pay/>
+      <Pay defaultAmount={100}/>
     </>
   );
 }

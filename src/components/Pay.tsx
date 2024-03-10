@@ -12,15 +12,15 @@ import { useState } from "react";
 interface FormData {
   name: string;
   mobile: string;
-  amount: string;
+  amount: number;
   muid: string;
 }
 
-export default function  Pay() {  
+export default function  Pay({defaultAmount}:{defaultAmount:number}) {  
   const [data, setData] = useState<FormData>({
     name: "",
     mobile: "",
-    amount: "",
+    amount:defaultAmount,  
     muid: "",
   });
 
@@ -28,22 +28,26 @@ export default function  Pay() {
 
   const { v4: uuidv4 } = require("uuid");
 
-  const  makePayment = async (e: React.MouseEvent<HTMLButtonElement>) => {
+   const  makePayment = async (
+    defaultAmount:number
+    ,e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const transactionid = "CR-" + uuidv4().toString(36).slice(-6);
     console.log(transactionid);
+
+     defaultAmount = defaultAmount * 100;
 
     const payload = {
       merchantId: process.env.NEXT_PUBLIC_MERCHANT_ID,
       merchantTransactionId: transactionid,
       merchantUserId: "CR-" + uuidv4().toString(36).slice(-6),
-      amount: 1000,
-      redirectUrl: `https://localhost:3000/success`,
+      amount: defaultAmount,
+      redirectUrl: `http://localhost:3000/api/status/${transactionid}`,
       redirectMode: "POST",
-      callbackUrl: `https://localhost:3000/success/${transactionid}`,
+      callbackUrl: `http://localhost:3000/api/status/${transactionid}`,
       mobileNumber: data.mobile,
       paymentInstrument: {
-        type: "PAY_PAGE",
+        type: "PAY_PAGE", 
       },
     };
 
@@ -74,11 +78,18 @@ export default function  Pay() {
             },
         }
     );
-
         console.log(response);
     const redirect =await  response.data.data.instrumentResponse.redirectInfo.url;
     router.push(redirect)
   
+    if (response.data.code === "PAYMENT_SUCCESS") {
+      // Redirect to success page
+      Router.push("/success");
+    } else {
+      // Redirect to failure page
+      Router.push("/failure");
+    }
+
   };
 
   
@@ -143,10 +154,10 @@ export default function  Pay() {
               <input
                 id="Amount"
                 name="amount"
-                value="10"
+                value={data.amount}
                 autoComplete="Amount"
-                onChange={(e) => handleFormData(e)}
-                required
+                disabled
+                
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -167,13 +178,13 @@ export default function  Pay() {
                 autoComplete="MUID"
                 required
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              />
+              />    
             </div>
           </div>
           <div></div>
           <div>
             <button
-              onClick={(e) => makePayment(e)}
+              onClick={(e) => makePayment(defaultAmount,e)}
               className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Pay
