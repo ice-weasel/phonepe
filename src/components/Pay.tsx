@@ -6,6 +6,7 @@ import { Redirect } from "next";
 import axios from "axios";
 import sha256 from "crypto-js/sha256";
 import { useState } from "react";
+import { GoogleSpreadsheet } from "google-spreadsheet";
 
 
 
@@ -14,6 +15,12 @@ interface FormData {
   mobile: string;
   amount: number;
   muid: string;
+}
+
+interface trans{
+  name:string,
+  amount:number,
+  tId:string
 }
 
 export default function  Pay({defaultAmount}:{defaultAmount:number}) {  
@@ -36,6 +43,9 @@ export default function  Pay({defaultAmount}:{defaultAmount:number}) {
     console.log(transactionid);
 
      defaultAmount = defaultAmount * 100;
+
+  
+
 
     const payload = {
       merchantId: process.env.NEXT_PUBLIC_MERCHANT_ID,
@@ -92,7 +102,10 @@ export default function  Pay({defaultAmount}:{defaultAmount:number}) {
 
   };
 
-  
+  const handleSubmit = (e:React.FormEvent<FormData>) => {
+
+    
+  }
 
 
   const handleFormData = (e: React.ChangeEvent<HTMLInputElement>) => {

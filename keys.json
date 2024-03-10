@@ -1,0 +1,14 @@
+{
+    "type": "service_account",
+    "project_id": "gsheets-413606",
+    "private_key_id": "9b8c80c0c72d31902d229cc4124275f7682eac26",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC1PE+iPruj+V/7\n9JYcSwe+wRgHDDIiTwnFDFjfG1/sfSi6o1lK1LvffUFGl5cXVLosF0yVGDpY/0h0\nZOClgzxgSK8T0hWhbfoL1bBqqkbuCA3CTtgBowPdXBiDLbpVu6Qb443Vs65yS0UB\nuOW4pbqobZdq5wiv9Ae0lCb8XgkGiKvS6ijwwP1sAyaQ28aY4WCmVtiK8YY7SLeW\ndOWlL5+pI4X6N3FwcDXTPRB5VOzL+73jd9y/zad5F3YiotXL+rrh9QZ7ln+VJq1t\nBAWFVdeyrfr5rhGQ27eQwA38WXU4d/k/vMQ2mtjrjW7p4qaIixs45jWJWoz/547w\nX8kAhzPhAgMBAAECggEADRtI+QdHY6LftaVpC6/DZiCpv6y6nW+Q2c68SJo+tCgS\n/3hbt0UuNwnkZBoHY7kNY63lrGydn50KnNxEwMN+ZMos2yaYyN1etWdlRDl/Oqyb\nbh9skKW83E/SN/5hGN0ij5/DvJ4rcfmOioLYHiPiHVcbmbAOmUbxHbaPITYdufqd\nz65J18M8ysqCY26Zj0MOm3wz/CSqGRb0fd7bGxdcUtQqK0HE3OhU6Yx50yCwlpt/\np/DLBYKxNDXkDL52iDvvqhpb7M3++yoLnY9Dtg0/GdeO6LAP5dchNLuRLid8xG/z\noNgiTL33jLKpMQ27VmhFs5HoOdcVAsjyX3pCXxMRrwKBgQD5r9PAlKhpBEhQAhmu\nyxbZAkKI/eLdEt/ZBlvpCzJxW1x9FBIWIoZt/S9ODmAa34q80wrn4WSVxCTJDQ/C\ny1svGkX1aWpsVbexB/z7Tf1qnfkCKOSWBWSUWThAK0EQomKFYolsCKH6cggpVDuC\n+50bU4txH30plXh/NhDKR5w6zwKBgQC50WmrTrkiPqmtzqFqNbwrTS5LDJOagZxy\n0Gjf+hT6jEyqdaNIva9Y1/NFuHdAovNTd0xcbKwP5xFlZnXBs1SpMEfs2H1FHwYM\nYI0B4YTs7XUBcc4D4bl25Go8ZhWPuHqeFk5svRhe232pawo06JXzX4dXBYRTu1lr\nlTiBm4mSTwKBgQCYf04KUgEl2sq7qvy6qCl1Mw8mEkJsGaoEKAEcrY0KdO1hK0/8\nmuuV48vvlZIW968Jsq/3fc7sNdbtwH9+zqsLcrWFtPOd5SCDDEjzx+deJcu/CPDL\nu9F5VaCoeIKNwVAA/XTHOeKMTvczHtIWJs0Gspj4522PZ04oDAJnOSNvOwKBgDLk\nHLmzNNchLF2S0viAwQlm+P/K8P4G828qjx6QooBAPpsM3uyELur5MgJtVBPazSOV\n7878YF92nHgWCLhFQjGYLIq8fAqbRY/MPbI/LqWpHzuHDLJZdu8N/d6O4uba0pJL\nb60uWOdZ29+zljcJYFAoYKu/sg8wp3vkgXZVv+bXAoGAAQNNSj7LoXmSF5/HDr/Z\n0We3XDtKq7IW2ZACrRPIzISXjXvCONKKsKyYOsOxEyWwBgVZ4MyOoC5epdIUmOTu\nBYkbjk82LQEgZngJcv58she9u9ZN+BiHzQzyNCy4sF2E/M9HrBeWN4oG041siT/b\nbuFRzWaIRrc2v4hmhjrbDcM=\n-----END PRIVATE KEY-----\n",
+    "client_email": "crossroads@gsheets-413606.iam.gserviceaccount.com",
+    "client_id": "105122945180089062305",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/crossroads%40gsheets-413606.iam.gserviceaccount.com",
+    "universe_domain": "googleapis.com"
+  }
+  
